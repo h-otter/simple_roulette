@@ -29,19 +29,19 @@ $(function(){
 			csvData.push(cells);
 		}
 	}
-	csvData = shuffleArray(csvData);	
-
-	var insert = "";
-	for (var i = 0; i < csvData.length; i++){
-		insert += '<div class="roulette_wrapper text-center h1" id="' + i + '">' + csvData[i][0] + '</div>'
-	}
-	$(roulette).append(insert);
 	
-	$('.test').click(function(){
-		inst.open();
-	});
-			
+	var setRouletteValue = function(){
+		csvData = shuffleArray(csvData);	
+		var insert = "";
+		for (var i = 0; i < csvData.length; i++){
+			insert += '<div class="roulette_wrapper text-center h1">' + csvData[i][0] + '</div>'
+		}
+		$(roulette).append(insert);
+	}
+	setRouletteValue();
+
   // initialize!
+	// roulette
 	var images = $(roulette).find('div').remove();
 	var imageCount = images.length;
 	var imageHeight = images.eq(0).height();
@@ -50,9 +50,9 @@ $(function(){
 	$(roulette).css({ 'height' : (imageHeight + 'px') });
 	
 	var winner = new Array();
-	var option = {
+	var roulette_options = {
 		speed : 10,
-		duration : 3,
+		duration : 15,
 		stopImageNumber : -1,
 		startCallback : function() {
 			console.log('start');
@@ -62,20 +62,27 @@ $(function(){
 		},
 		stopCallback : function($stopElm) {
 			console.log('stop');
-			console.log($stopElm);
-			// cahnge a_result with $stopElm
-			// remove div $stopElm
-			// shuffle div
-			
 			$('#student_num').text(csvData[$stopElm][0]);
 			$('#department_num').text(csvData[$stopElm][1]);
 			$('#student_name').text(csvData[$stopElm][2]);
 			
-			winner.push(csvData.splice($stopElm));
 			setTimeout(function(){
 				inst.open();
+				winner.push(csvData.splice($stopElm, 1));
+				$(roulette).empty();
+				setRouletteValue();
+				
+				roulette_options.duration = roulette_options.duration - 3 + Math.floor(Math.random() * 6);
+				roulette_options.$images = $(roulette).find('div').remove();
+				roulette_options.imageCount = roulette_options.$images.length;
+				roulette_options.imageHeight = roulette_options.$images.eq(0).height();
+				roulette_options.totalHeight = roulette_options.imageCount * roulette_options.imageHeight;
+				roulette_options.runUpDistance = 2 * roulette_options.imageHeight;
+				$(roulette).css({ 'height' : (roulette_options.imageHeight + 'px') });
+			
+				$('div.roulette').roulette('option', roulette_options);
+				$('div.roulette').roulette('init', $('div.roulette'));	
 			}, 1000);
-			$(roulette).find('div').eq($stopElm)[0].remove();			
 		},
 				
 		$images: images,
@@ -84,25 +91,22 @@ $(function(){
 		totalHeight: totalHeight,
 		runUpDistance: runUpDistance
 	}
-	$('div.roulette').roulette(option);	
+	$('div.roulette').roulette(roulette_options);	
 	$('.start').click(function(){
 		$('div.roulette').roulette('start');	
 	});
-
+	$('.stop').click(function(){
+		$('div.roulette').roulette('stop');	
+	});
+		$('.test').click(function(){
+		inst.open();
+	});
+	
+	
+  // modal
  	var remodal_options = {
 	  closeOnEscape: false ,
 		closeOnOutsideClick: false
 	};
 	var inst = $('[data-remodal-id=a_result]').remodal(remodal_options);			
-	$(document).on('confirmation', '.remodal', function () {
-		console.log('Confirmation button is clicked');
-		
-		option["duration"] = option["duration"] - 3 + Math.floor(Math.random() * 6);
-		console.log(option["duration"]);
-		console.log($('div.roulette'));
-		
-		// reset roulette
-		// option["duration"] = 30 + Math.random() * 5
-		// $('div.roulette').roulette(option);
-	});
 });
