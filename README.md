@@ -11,33 +11,15 @@ in [japanese](使い方.md)
 ## Library
 
 + [roulette.js](https://github.com/akira-kuriyama/roulette.js)
-+ [jquery.js]()
++ [jquery.js](https://jquery.com/)
 + [bootstrap.js](http://getbootstrap.com/)
 + [remodal.js](https://github.com/VodkaBears/Remodal/)
-
-
-
-
 
 ## Register
 
 ### list.csv
 
-左から学籍番号、学類、
+this can contain three vars.
 
-
-## Config
-
-#### duration
-
-+ 指定した秒数の後に回転が止まります
-+ default: 30 sec
-
-#### speed
-
-+ ルーレットの回転速度
-+ 
-+ default: 10
-
-### Lisence MIT
+## Lisence MIT
 

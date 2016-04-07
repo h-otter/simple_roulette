@@ -51,7 +51,7 @@ $(function(){
 	
 	var winner = new Array();
 	var roulette_options = {
-		speed : 10,
+		speed : 50,
 		duration : 15,
 		stopImageNumber : -1,
 		startCallback : function() {
@@ -68,21 +68,7 @@ $(function(){
 			
 			setTimeout(function(){
 				inst.open();
-				winner.push(csvData.splice($stopElm, 1));
-				$(roulette).empty();
-				setRouletteValue();
-				
-				roulette_options.duration = roulette_options.duration - 3 + Math.floor(Math.random() * 6);
-				roulette_options.$images = $(roulette).find('div').remove();
-				roulette_options.imageCount = roulette_options.$images.length;
-				roulette_options.imageHeight = roulette_options.$images.eq(0).height();
-				roulette_options.totalHeight = roulette_options.imageCount * roulette_options.imageHeight;
-				roulette_options.runUpDistance = 2 * roulette_options.imageHeight;
-				$(roulette).css({ 'height' : (roulette_options.imageHeight + 'px') });
-			
-				$('div.roulette').roulette('option', roulette_options);
-				$('div.roulette').roulette('init', $('div.roulette'));	
-			}, 1000);
+			}, 1500);
 		},
 				
 		$images: images,
@@ -108,5 +94,22 @@ $(function(){
 	  closeOnEscape: false ,
 		closeOnOutsideClick: false
 	};
-	var inst = $('[data-remodal-id=a_result]').remodal(remodal_options);			
+	var inst = $('[data-remodal-id=a_result]').remodal(remodal_options);
+	$(document).on('opened', '.remodal', function () {
+		winner.push(csvData.splice($stopElm, 1));
+		$(roulette).empty();
+		setRouletteValue();
+				
+		roulette_options.duration = roulette_options.duration - 3 + Math.floor(Math.random() * 6);
+		roulette_options.$images = $(roulette).find('div').remove();
+		roulette_options.imageCount = roulette_options.$images.length;
+		roulette_options.imageHeight = roulette_options.$images.eq(0).height();
+		roulette_options.totalHeight = roulette_options.imageCount * roulette_options.imageHeight;
+		roulette_options.runUpDistance = 2 * roulette_options.imageHeight;
+		$(roulette).css({ 'height' : (roulette_options.imageHeight + 'px') });
+			
+		$('div.roulette').roulette('option', roulette_options);
+		$('div.roulette').roulette('init', $('div.roulette'));
+	});
+	
 });
