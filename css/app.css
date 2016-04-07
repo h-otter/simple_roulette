@@ -2,6 +2,30 @@ body {
 	padding-top: 60px;
 	padding-bottom: 40px;
 }
+
+.row-va-bottom {
+	text-align:center;
+	letter-spacing:-0.4em;
+}
+.row-va-bottom > [class*='col-'] {
+	display:inline-block;
+	letter-spacing:0;
+	vertical-align: bottom;
+	float:none;
+}
+
+@media only screen and (min-width: 641px) {
+  .remodal {
+    max-width: 1280px;
+  }
+}
+
+.title {
+	font-family: 'Oswald', sans-serif;
+}
+
+
+
 div.roulette {
 	margin-top: 35px;
 }

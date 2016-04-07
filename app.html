@@ -9,9 +9,10 @@
 		<!--<link rel="stylesheet" href="css/bootstrap-responsive.css"></link>-->
 		<!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css">
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/ui-lightness/jquery-ui.css">-->
-		<link rel="stylesheet" href="css/app.css"></link>
+		<link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/remodal.css">
 		<link rel="stylesheet" href="css/remodal-default-theme.css">
+		<link rel="stylesheet" href="css/app.css"></link>
 	</head>
 	<body>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -24,9 +25,9 @@
 		 
 		<div class="container">
 			<div class="page-header" style="">
-				<h1>
+				<h2 class="title" >
 					Title
-				</h1>
+				</h2>
 			</div>
 
 			<div class="row">
@@ -42,29 +43,30 @@
 					</div>
 					<div class="btn_container">
 						<p>
-						<button class="btn btn-large btn-primary start"> START </button>
-						<button class="test btn-large btn btn-warning"> TEST </button>
+						<button class="btn btn-lg btn-primary start"> START </button>
+						<button class="test btn-lg btn btn-warning"> TEST </button>
 						</p>
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<div data-remodal-id="a_result">
-				<h1>Congrants!!</h1>
-				<div>
-					<div class="">
-						<h3 id="student_num">hoge</h3>
-						<h3 id="department_num">hoge</h3>
-					</div>
-					<div class="">
-						<h1 id="student_name">foobar</h1>
-					</div>
-					<div class="">
-						<h2>さん</h2>
-					</div>
+		<div class="container" data-remodal-id="a_result">
+			<h2 class="title">Congrants!!</h2>
+			<div class="row row-va-bottom">
+				<div class="col-lg-2">
+					<div class="h3" id="department_num">第2類</div>
+					<div class="h3" id="student_num">1234567</div>
 				</div>
-				<button data-remodal-action="confirm" class="btn btn-large next remodal-confirm"> NEXT </button>
+				<div class="col-lg-8">
+					<div class="h1" id="student_name">ああ あああ</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="h3 text-left">さん</div>
+				</div>
 			</div>
+			<button data-remodal-action="confirm" class="btn btn-lg btn-success next remodal-confirm"> NEXT </button>
+		</div>
 
 
 		<script>
@@ -78,7 +80,7 @@
  			var remodal_options = {
 			  closeOnEscape: false ,
 				closeOnOutsideClick: false
-			 };
+			};
 			var inst = $('[data-remodal-id=a_result]').remodal(remodal_options);
 			$('.test').click(function(){
 				inst.open();
