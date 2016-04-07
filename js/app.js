@@ -68,6 +68,7 @@ $(function(){
 			
 			setTimeout(function(){
 				inst.open();
+				winner.push(csvData.splice($stopElm, 1));
 			}, 1500);
 		},
 				
@@ -96,7 +97,6 @@ $(function(){
 	};
 	var inst = $('[data-remodal-id=a_result]').remodal(remodal_options);
 	$(document).on('opened', '.remodal', function () {
-		winner.push(csvData.splice($stopElm, 1));
 		$(roulette).empty();
 		setRouletteValue();
 				
