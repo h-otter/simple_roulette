@@ -44,7 +44,8 @@ $(function(){
 	// roulette
 	var images = $(roulette).find('div').remove();
 	var imageCount = images.length;
-	var imageHeight = images.eq(0).height();
+	// var imageHeight = images.eq(0).height();
+	var imageHeight = 200;
 	var totalHeight = imageCount * imageHeight;
 	var runUpDistance = 2 * imageHeight;
 	$(roulette).css({ 'height' : (imageHeight + 'px') });
@@ -103,7 +104,8 @@ $(function(){
 		roulette_options.duration = roulette_options.duration - 3 + Math.floor(Math.random() * 6);
 		roulette_options.$images = $(roulette).find('div').remove();
 		roulette_options.imageCount = roulette_options.$images.length;
-		roulette_options.imageHeight = roulette_options.$images.eq(0).height();
+		// roulette_options.imageHeight = roulette_options.$images.eq(0).height();
+		roulette_options.imageHeight = 200;
 		roulette_options.totalHeight = roulette_options.imageCount * roulette_options.imageHeight;
 		roulette_options.runUpDistance = 2 * roulette_options.imageHeight;
 		$(roulette).css({ 'height' : (roulette_options.imageHeight + 'px') });
