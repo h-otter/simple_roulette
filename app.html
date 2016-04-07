@@ -6,76 +6,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Simple Roulette</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
-		<!--<link rel="stylesheet" href="css/bootstrap-responsive.css"></link>-->
-		<!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css">
-		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/ui-lightness/jquery-ui.css">-->
 		<link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/remodal.css">
 		<link rel="stylesheet" href="css/remodal-default-theme.css">
 		<link rel="stylesheet" href="css/app.css"></link>
 	</head>
 	<body>
-		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<!--<script src="js/roulette.min.js"></script>-->
+		<script src="js/roulette.js"></script>
 		<script src="js/remodal.min.js"></script>
+		<script src="js/app.js"></script>
 
 		 
 		<div class="container">
 			<div class="page-header" style="">
-				<h2 class="title" >
+				<h2 class="title">
 					Title
 				</h2>
 			</div>
 
-			<div class="row">
-				<div class="span4">
-					<div class="roulette_container" >
-						<div class="roulette" style="display:none;">
-							<div><h1>hogehgoe</h1></div>
-							<div>hogehgoe</div>
-							<div>hogehgoe</div>
-							<div>hogehgoe</div>
-							<div>hogehgoe</div>
-						</div>
-					</div>
-					<div class="btn_container">
-						<p>
-						<button class="btn btn-lg btn-primary start"> START </button>
-						<button class="test btn-lg btn btn-warning"> TEST </button>
-						</p>
-					</div>
+			<div class="roulette_container">
+				<div id="roulette" class="roulette" style="display:none;">
+					<div class="roulette_wrapper" ><h1 class="roulette_value text-center" >TEST</h1></div>
+					<div class="roulette_wrapper" ><h1 class="roulette_value" >TEST</h1></div>
+					<div class="roulette_wrapper" ><h1 class="roulette_value" >TEST</h1></div>
+					<div class="roulette_wrapper" ><h1 class="roulette_value" >TEST</h1></div>
+					<div class="roulette_wrapper" ><h1 class="roulette_value" >TEST</h1></div>
+					<div class="roulette_wrapper" ><h1 class="roulette_value" >TEST</h1></div>
+
 				</div>
 			</div>
+			<div class="btn_container">
+				<p>
+				<button class="btn btn-lg btn-primary start"> START </button>
+				<button class="test btn-lg btn btn-warning"> TEST </button>
+				</p>
+	  	</div>
 		</div>
 
 		<div class="container" data-remodal-id="a_result">
 			<h2 class="title">Congrants!!</h2>
 			<div class="row row-va-bottom">
 				<div class="col-lg-2">
-					<div class="h3" id="department_num">第2類</div>
-					<div class="h3" id="student_num">1234567</div>
+					<p class="h3" id="department_num">第2類</p>
+					<p class="h3" id="student_num">1234567</p>
 				</div>
 				<div class="col-lg-8">
-					<div class="h1" id="student_name">ああ あああ</div>
+					<p class="h1" id="student_name">あああああ</p>
 				</div>
 				<div class="col-lg-2">
-					<div class="h3 text-left">さん</div>
+					<p class="h3">さん</p>
 				</div>
 			</div>
-			<button data-remodal-action="confirm" class="btn btn-lg btn-success next remodal-confirm"> NEXT </button>
+			<button data-remodal-action="confirm" class="btn btn-lg btn-success remodal-confirm"> NEXT </button>
 		</div>
 
 
 		<script>
-		jQuery(function(){    
-		  // // initialize!
-			// $.getJSON("config.json", function(data){
-			// 	$('div.roulette').roulette(data);
-  		// 	console.log(data);
-			// });
+		$(function(){
+			var images = $(roulette).find('div').remove();
+			var imageCount = images.length;
+			var imageHeight = images.eq(0).height();
+			var totalHeight = imageCount * imageHeight;
+			var runUpDistance = 2 * imageHeight;
+			$(roulette).css({ 'height' : (imageHeight + 'px') });
+			console.log(images.eq(0).height())
+		    
+		  // initialize!
+			var option = {
+				speed : 10,
+				duration : 3,
+				stopImageNumber : -1,
+				startCallback : function() {
+					console.log('start');
+				},
+				slowDownCallback : function() {
+					console.log('slowDown');
+				},
+				stopCallback : function($stopElm) {
+					console.log('stop');
+					// cahnge a_result with $stopElm
+					inst.open();
+				},
+				
+				$images: images,
+				imageCount: imageCount,
+				imageHeight: imageHeight,
+				totalHeight: totalHeight,
+				runUpDistance: runUpDistance
+			}
+			$('div.roulette').roulette(option);	
+			
+			$('.start').click(function(){
+				$('div.roulette').roulette('start');	
+			});
 
  			var remodal_options = {
 			  closeOnEscape: false ,
