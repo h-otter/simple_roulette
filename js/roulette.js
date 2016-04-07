@@ -82,7 +82,7 @@
 			if (p.maxDistance && p.distance >= p.maxDistance) {
 				p.isStop = true;
 				reset();
-				p.stopCallback(p.$rouletteTarget.find('img').eq(p.stopImageNumber));
+				p.stopCallback(p.stopImageNumber); // edited
 				return;
 			}
 			p.distance += speed_;

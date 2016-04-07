@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Simple Roulette</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/remodal.css">
 		<link rel="stylesheet" href="css/remodal-default-theme.css">
-		<link rel="stylesheet" href="css/app.css"></link>
+		<link rel="stylesheet" href="css/app.css">
 	</head>
 	<body>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -28,16 +28,6 @@
 
 			<div class="roulette_container">
 				<div id="roulette" class="roulette" style="display:none;">
-					<div class="roulette_wrapper text-center h1" >TEST</h1></div>
-					<div class="roulette_wrapper text-center h1" >TEST1</h1></div>
-					<div class="roulette_wrapper text-center h1" >TEST2</h1></div>
-					<div class="roulette_wrapper text-center h1" >TEST3</h1></div>
-					<div class="roulette_wrapper text-center h1" >TEST4</h1></div>
-					<div class="roulette_wrapper text-center h1" >TEST5</h1></div>
-					<div class="roulette_wrapper text-center h1" >TEST6</h1></div>
-					<div class="roulette_wrapper text-center h1" >TEST7</h1></div>
-
-
 
 				</div>
 			</div>
@@ -65,57 +55,6 @@
 			</div>
 			<button data-remodal-action="confirm" class="btn btn-lg btn-success remodal-confirm"> NEXT </button>
 		</div>
-
-
-		<script>
-		$(function(){
-			var images = $(roulette).find('div').remove();
-			var imageCount = images.length;
-			var imageHeight = images.eq(0).height();
-			var totalHeight = imageCount * imageHeight;
-			var runUpDistance = 2 * imageHeight;
-			$(roulette).css({ 'height' : (imageHeight + 'px') });
-			console.log(images.eq(0).height())
-		    
-		  // initialize!
-			var option = {
-				speed : 10,
-				duration : 3,
-				stopImageNumber : -1,
-				startCallback : function() {
-					console.log('start');
-				},
-				slowDownCallback : function() {
-					console.log('slowDown');
-				},
-				stopCallback : function($stopElm) {
-					console.log('stop');
-					// cahnge a_result with $stopElm
-					inst.open();
-				},
-				
-				$images: images,
-				imageCount: imageCount,
-				imageHeight: imageHeight,
-				totalHeight: totalHeight,
-				runUpDistance: runUpDistance
-			}
-			$('div.roulette').roulette(option);	
-			
-			$('.start').click(function(){
-				$('div.roulette').roulette('start');	
-			});
-
- 			var remodal_options = {
-			  closeOnEscape: false ,
-				closeOnOutsideClick: false
-			};
-			var inst = $('[data-remodal-id=a_result]').remodal(remodal_options);
-			$('.test').click(function(){
-				inst.open();
-			});
-		});
-		</script>
 	</body>
 </html>
 
