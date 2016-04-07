@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Simple Roulette</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+		<!--<link rel="stylesheet" href="css/bootstrap-responsive.css"></link>-->
+		<!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css">
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/ui-lightness/jquery-ui.css">-->
+		<link rel="stylesheet" href="css/app.css"></link>
+		<link rel="stylesheet" href="css/remodal.css">
+		<link rel="stylesheet" href="css/remodal-default-theme.css">
+	</head>
+	<body>
+		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!--<script src="js/roulette.min.js"></script>-->
+		<script src="js/remodal.min.js"></script>
+
+		 
+		<div class="container">
+			<div class="page-header" style="">
+				<h1>
+					Title
+				</h1>
+			</div>
+
+			<div class="row">
+				<div class="span4">
+					<div class="roulette_container" >
+						<div class="roulette" style="display:none;">
+							<div><h1>hogehgoe</h1></div>
+							<div>hogehgoe</div>
+							<div>hogehgoe</div>
+							<div>hogehgoe</div>
+							<div>hogehgoe</div>
+						</div>
+					</div>
+					<div class="btn_container">
+						<p>
+						<button class="btn btn-large btn-primary start"> START </button>
+						<button class="test btn-large btn btn-warning"> TEST </button>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div data-remodal-id="a_result">
+				<h1>Congrants!!</h1>
+				<div>
+					<div class="">
+						<h3 id="student_num">hoge</h3>
+						<h3 id="department_num">hoge</h3>
+					</div>
+					<div class="">
+						<h1 id="student_name">foobar</h1>
+					</div>
+					<div class="">
+						<h2>さん</h2>
+					</div>
+				</div>
+				<button data-remodal-action="confirm" class="btn btn-large next remodal-confirm"> NEXT </button>
+			</div>
+
+
+		<script>
+		jQuery(function(){    
+		  // // initialize!
+			// $.getJSON("config.json", function(data){
+			// 	$('div.roulette').roulette(data);
+  		// 	console.log(data);
+			// });
+
+ 			var remodal_options = {
+			  closeOnEscape: false ,
+				closeOnOutsideClick: false
+			 };
+			var inst = $('[data-remodal-id=a_result]').remodal(remodal_options);
+			$('.test').click(function(){
+				inst.open();
+			});
+		});
+		</script>
+	</body>
+</html>
+
+
+
+
