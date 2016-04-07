@@ -32,18 +32,20 @@ body {
 /* roulette */
 .roulette_wrapper {
 	height: 200px;
+	font-size: 200px;
+	margin: 0px 0px 0px 0px;
 }
 
 div.roulette {
 	margin-top: 35px;
 }
-div.roulette-inner {
+/*div.roulette-inner {
 	left : 33px;
-}
+}*/
 div.roulette_container {
 	background-color:rgb(253, 253, 253);
 	width:90%;
-	height:300px;
+	height:270px;
 	border:1px solid rgba(253, 252, 253, 0.31);
 	box-shadow:0px 0px 3px lightskyblue;
 	margin:auto;
