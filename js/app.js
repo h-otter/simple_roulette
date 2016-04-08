@@ -53,7 +53,7 @@ $(function(){
 	var winner = new Array();
 	var roulette_options = {
 		speed : 50,
-		duration : 15,
+		duration : 10,
 		stopImageNumber : -1,
 		startCallback : function() {
 			console.log('start');
@@ -100,8 +100,7 @@ $(function(){
 	$(document).on('opened', '.remodal', function () {
 		$(roulette).empty();
 		setRouletteValue();
-				
-		roulette_options.duration = roulette_options.duration - 3 + Math.floor(Math.random() * 6);
+		
 		roulette_options.$images = $(roulette).find('div').remove();
 		roulette_options.imageCount = roulette_options.$images.length;
 		// roulette_options.imageHeight = roulette_options.$images.eq(0).height();
