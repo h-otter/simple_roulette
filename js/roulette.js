@@ -55,7 +55,7 @@
 			p.slowDownCallback();
 			p.isSlowdown = true;
 			p.slowDownStartDistance = p.distance;
-			p.maxDistance = p.distance + (p.totalHeight / 7);
+			p.maxDistance = p.distance + (p.totalHeight / 10);
 			p.maxDistance += p.imageHeight - p.topPosition % p.imageHeight;
 			if (p.stopImageNumber != null) {
 				p.maxDistance += (p.totalHeight - (p.maxDistance % p.totalHeight) + (p.stopImageNumber * p.imageHeight))
